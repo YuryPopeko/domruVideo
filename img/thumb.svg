@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #719fd3;
+        stroke-width: 1px;
+      }
+
+      .cls-2 {
+        fill: #719fd3;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="12" cy="12" r="12"/>
+  <path class="cls-2" d="M10,6h1V18H10V6Z"/>
+  <path id="Shape_886_copy" data-name="Shape 886 copy" class="cls-2" d="M13,6h1V18H13V6Z"/>
+  <path class="cls-2" d="M7,9H8v6H7V9Z"/>
+  <path id="Shape_887_copy" data-name="Shape 887 copy" class="cls-2" d="M16,9h1v6H16V9Z"/>
+</svg>
