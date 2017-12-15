@@ -124,14 +124,15 @@ calculatorRange.addEventListener('mousemove', function(e) {
 let amount = document.querySelector('.amount input');
 
 document.querySelector('.line.amount .indicators').addEventListener('click', function(event) {
+	event.preventDefault();
 	let e =  event.target,
 	value = parseInt(amount.value);
 
-	if (e.classList.contains('minus') && value > 0) {
+	if (e.classList.contains('minus') && value > 1) {
 		amount.value = value - 1;
-	}
-
-	if (e.classList.contains('plus')) {
+	} else if (e.classList.contains('plus') && value) {
 		amount.value = value + 1;
+	} else {
+		amount.value = 1;
 	}
 });

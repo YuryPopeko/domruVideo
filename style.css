@@ -39,6 +39,7 @@ input[type='submit'] {
 button,
 input {
   outline: 0;
+  padding: 0;
 }
 
 label {
@@ -60,6 +61,11 @@ svg {
   height: 100%;
 }
 
+.fd0 {fill: #fd0}
+.dark {fill: #333}
+.blue {fill: #729fd4}
+.fcfeff {fill: #fcfeff}
+
 div.modal {
   width: 100vw;
   height: 100vh;
@@ -72,22 +78,18 @@ div.modal {
   transition: .2s ease-in-out;
 }
 
-.modal.open {
-  transform: scale(1);
-}
+.modal.open {transform: scale(1)}
 
 .modal .close {
   position: absolute;
   top: 2vw;
-  right: 1vw;
-  font: 4vw/0 fedra pro book tf;
+  right: 2vw;
+  font: 4vw/2vw fedra pro book tf;
   background: 0;
   color: #aaa;
 }
 
-.modal .close:hover {
-  color: #333;
-}
+.modal .close:hover {color: #333}
 
 .modal .wrapper {
   width: 25.32vw;
@@ -187,6 +189,7 @@ header .phone-number{
 #with-out {
   height: 42.396vw;
   position: relative;
+  overflow: hidden;
 }
 
 .without,
@@ -361,6 +364,144 @@ h2 {
   height: 4.375vw;
   margin: 0 auto 1vw auto;
 }
+
+@keyframes lock {
+  5% {transform: rotate(7deg) translate(0, -1%)}
+  20% {transform: rotate(-10deg) translate(0, -3%)}
+  35% {transform: rotate(15deg) translate(0, -4%)}
+  50% {transform: rotate(-20deg) translate(0, -4%)}
+  65% {transform: rotate(15deg) translate(0, -4%)}
+  80% {transform: rotate(-10deg) translate(0, -2%)}
+  95% {transform: rotate(4deg) translate(0, -1%)}
+}
+
+@keyframes light-one-fd0 {
+  5% {fill: #fd0}
+  10% {fill: #fd0}
+  15% {fill: #fff}
+  20% {fill: #fff}
+  25% {fill: #fff}
+  30% {fill: #fff}
+  35% {fill: #fd0}
+  40% {fill: #fff}
+  45% {fill: #fff}
+  50% {fill: #fd0}
+  55% {fill: #fd0}
+  90% {fill: #fff}
+}
+
+@keyframes light-two-fd0 {
+  0% {fill: #fff}
+  20% {fill: #fff}
+  25% {fill: #fd0}
+  65% {fill: #fd0}
+  70% {fill: #fff}
+  100% {fill: #fd0}
+}
+
+@keyframes light-three-fd0 {
+  0% {fill: #fd0}
+  15% {fill: #fd0}
+  20% {fill: #fff}
+  25% {fill: #fff}
+  40% {fill: #fff}
+  55% {fill: #fff}
+  60% {fill: #fd0}
+  80% {fill: #fd0}
+  90% {fill: #fff}
+}
+
+.storage .lock {
+  transform-origin: 50% 0%;
+  -moz-transform-origin: 80% 50%;
+}
+
+.storage:hover .lock {animation: lock 1.5s}
+.storage:hover .light-one {animation: light-one-fd0 1.5s}
+.storage:hover .light-two {animation: light-two-fd0 1.5s}
+.storage:hover .light-three {animation: light-three-fd0 1.5s}
+
+@keyframes wrench {
+  50% {transform: scale(.8) rotate(180deg)}
+  100% {transform: scale(1) rotate(360deg)}
+}
+
+@keyframes screwdriver {
+  50% {transform: scale(.8) rotate(-180deg)}
+  100% {transform: scale(1) rotate(-360deg)}
+}
+
+.tools .wrench,
+.tools .screwdriver {
+  transform-origin: 50% 50%;
+}
+
+.tools:hover .wrench {animation: wrench .7s linear}
+.tools:hover .screwdriver {animation: screwdriver .7s linear}
+
+@keyframes wave-one {
+  10% {fill: #333}
+  15% {fill: #f5fbff}
+  75% {fill: #f5fbff}
+  80% {fill: #333}
+}
+
+@keyframes wave-two {
+  25% {fill: #333}
+  30% {fill: #f5fbff}
+  85% {fill: #f5fbff}
+  90% {fill: #333}
+}
+
+@keyframes wave-three {
+  40% {fill: #333}
+  45% {fill: #f5fbff}
+  95% {fill: #f5fbff}
+  100% {fill: #333}
+}
+
+@keyframes light-one-blue {
+  5% {fill: #729fd4}
+  10% {fill: #729fd4}
+  15% {fill: #fff}
+  20% {fill: #fff}
+  25% {fill: #fff}
+  30% {fill: #fff}
+  35% {fill: #729fd4}
+  40% {fill: #fff}
+  45% {fill: #fff}
+  50% {fill: #729fd4}
+  55% {fill: #729fd4}
+  90% {fill: #fff}
+}
+
+@keyframes light-two-blue {
+  0% {fill: #fff}
+  20% {fill: #fff}
+  25% {fill: #729fd4}
+  65% {fill: #729fd4}
+  70% {fill: #fff}
+  100% {fill: #729fd4}
+}
+
+@keyframes light-three-blue {
+  0% {fill: #729fd4}
+  5% {fill: #729fd4}
+  20% {fill: #fff}
+  35% {fill: #fff}
+  40% {fill: #fff}
+  55% {fill: #fff}
+  60% {fill: #729fd4}
+  80% {fill: #729fd4}
+  90% {fill: #fff}
+}
+
+.modem:hover .wave-one {animation: wave-one 1.5s infinite linear}
+.modem:hover .wave-two {animation: wave-two 1.5s infinite linear}
+.modem:hover .wave-three {animation: wave-three 1.5s infinite linear}
+.modem:hover .light-one {animation: light-one-blue 1.5s infinite linear}
+.modem:hover .light-two {animation: light-two-blue 1.5s infinite linear}
+.modem:hover .light-three {animation: light-three-blue 1.5s infinite linear}
 
 #advantages p,
 #how-it-works p {
@@ -634,7 +775,7 @@ h2 span {
 #calculator form {
   width: 61.875vw;
   padding: 3.385vw 2.604vw 5.208vw 2.604vw;
-  margin: 0 auto;
+  margin: 0 auto 3.463vw auto;
   border: 1px solid #e9e9e9;
   background: #fff;
   position: relative;
@@ -744,6 +885,7 @@ input::-webkit-inner-spin-button {
   text-align: center;
   font: 1.25vw/1.7vw fedra pro book tf;
   color: #73a1d4;
+  background: #fff;
   border: 1px solid #e9e9e9;
   cursor: pointer;
   user-select: none;
@@ -835,11 +977,10 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]::-moz-range-thumb {
-  border: 1px solid #e9e9e9;
   box-shadow: 0px 2px 6.79px 0.21px rgba(0,0,0,.09);
   cursor: pointer;
   transform: translate(0, 70%);
-  background: url(img/thumb.svg) no-repeat center;
+  background: url(img/thumb.svg) no-repeat center / contain;
 }
 
 input[type=range]::-moz-range-track {
