@@ -432,7 +432,9 @@ h2 {
 }
 
 .tools .wrench,
-.tools .screwdriver {
+.tools .screwdriver,
+.cloud g,
+.planet {
   transform-origin: 50% 50%;
 }
 
@@ -502,6 +504,58 @@ h2 {
 .modem:hover .light-one {animation: light-one-blue 1.5s infinite linear}
 .modem:hover .light-two {animation: light-two-blue 1.5s infinite linear}
 .modem:hover .light-three {animation: light-three-blue 1.5s infinite linear}
+
+@keyframes camera-one {
+  33% {transform: rotate(10deg)}
+  80% {transform: rotate(-10deg)}
+}
+
+@keyframes camera-two {
+  33% {transform: rotate(-10deg)}
+  80% {transform: rotate(10deg)}
+}
+
+.cameras .camera-one,
+.cameras .camera-two {
+  transform-origin: 19% 88%;
+  -moz-transform-origin: 40% 88%;
+}
+
+@keyframes cloud {
+  50% {transform: translate(12%)}
+}
+
+.cameras:hover .camera-one {animation: camera-one 2.5s infinite linear}
+.cameras:hover .camera-two {animation: camera-two 2.5s infinite linear}
+
+.cloud:hover g {animation: cloud 3.5s infinite linear}
+
+.cloud:hover .light-one {animation: light-one-fd0 2s infinite}
+.cloud:hover .light-two {animation: light-two-fd0 2s infinite}
+.cloud:hover .light-three {animation: light-three-fd0 2s infinite}
+.cloud:hover .light-four {animation: light-one-fd0 2s infinite}
+
+@keyframes globe-points {
+  5% {fill: #fcfeff}
+  95% {fill: #fcfeff}
+  100% {fill: #333}
+}
+
+@keyframes globe-label {
+  15% {transform: translate(0, -100%)}
+  80% {transform: translate(0, -100%)}
+  100% {transform: translate(0, 0)}
+}
+
+@keyframes planet {
+  15% {transform: rotate(0deg)}
+  80% {transform: rotate(180deg)}
+  100% {transform: rotate(180deg)}
+}
+
+.globe:hover .point {animation: globe-points 1s linear}
+.globe:hover .label {animation: globe-label 1s linear}
+.globe:hover .planet {animation: planet 1s linear}
 
 #advantages p,
 #how-it-works p {
