@@ -61,6 +61,7 @@ svg {
   height: 100%;
 }
 
+.fff {fill: #fff;}
 .fd0 {fill: #fd0}
 .dark {fill: #333}
 .blue {fill: #729fd4}
@@ -434,7 +435,8 @@ h2 {
 .tools .wrench,
 .tools .screwdriver,
 .cloud g,
-.planet {
+.planet,
+.iPad {
   transform-origin: 50% 50%;
 }
 
@@ -556,6 +558,28 @@ h2 {
 .globe:hover .point {animation: globe-points 1s linear}
 .globe:hover .label {animation: globe-label 1s linear}
 .globe:hover .planet {animation: planet 1s linear}
+
+@keyframes iMac {
+  5% {transform: translate(0)}
+  30% {transform: translate(-22%)}
+  85% {transform: translate(-22%)}
+}
+
+@keyframes iPad {
+  5% {transform: translate(0)}
+  30% {transform: translate(35%, -11%) scale(.92) rotate(-90deg)}
+  85% {transform: translate(35%, -11%) scale(.92) rotate(-90deg)}
+}
+
+@keyframes iPhone {
+  5% {transform: translate(0)}
+  30% {transform: translate(24%)}
+  85% {transform: translate(24%)}
+}
+
+.devices:hover .iMac {animation: iMac 1.4s}
+.devices:hover .iPad {animation: iPad 1.4s}
+.devices:hover .iPhone {animation: iPhone 1.4s}
 
 #advantages p,
 #how-it-works p {
