@@ -90,9 +90,9 @@ function counter() {
 			el = arguments[i],
 			increment;
 		let end = parseInt(el.innerHTML);
-		if (end === 4200) increment = 20;
-		if (end === 1000) increment = 5;
-		if (end === 566) increment = 3;
+		if (end === 4200) increment = 16;
+		if (end === 1000) increment = 4;
+		if (end === 566) increment = 2;
 		let t = setInterval(function() {
 			el.innerHTML = j + '';
 			if(j > end) {
@@ -135,4 +135,20 @@ document.querySelector('.line.amount .indicators').addEventListener('click', fun
 	} else {
 		amount.value = 1;
 	}
+});
+
+
+
+let interval = setInterval(function() {
+	let currentSlide = document.querySelector('.clients input[checked]');
+	currentSlide.removeAttribute('checked', '');
+	if(currentSlide.nextElementSibling.nodeName === 'INPUT') {
+		currentSlide.nextElementSibling.setAttribute('checked', '')
+	} else {
+		document.getElementById('slide1').setAttribute('checked', '')
+	}
+}, 2000);
+
+document.querySelector('.clients .nav').addEventListener('click', function(event) {
+	if (event.target.nodeName === 'LABEL') clearTimeout(interval);
 });
