@@ -1,3 +1,23 @@
+function autoChange(timer, section, time) {
+	timer = setInterval(function() {
+		const currentSelector = section + ' input[checked]',
+			  firstInputSelector = section + ' input';
+		let current = document.querySelector(currentSelector);
+		current.removeAttribute('checked', '');
+		if(current.nextElementSibling.nodeName === 'INPUT') {
+			current.nextElementSibling.setAttribute('checked', '')
+		} else {
+			document.querySelector(firstInputSelector).setAttribute('checked', '')
+		}
+	}, time);
+
+	document.querySelector(section + ' .nav').addEventListener('click', function(event) {
+		if (event.target.nodeName === 'LABEL') clearTimeout(timer);
+	});
+}
+
+
+
 const separator = document.querySelector('.separator'),
 	  withPhoto = document.querySelector('.with'),
 	  withoutPhoto = document.querySelector('.without'),
@@ -20,6 +40,9 @@ photoContainer.addEventListener('mousemove', function(event) {
 		withPhoto.style.width = res + 'px';
 	}
 }, false);
+
+let withOutTimer;
+autoChange(withOutTimer, '#with-out', 10000);
 
 
 
@@ -90,13 +113,13 @@ function counter() {
 			el = arguments[i],
 			increment;
 		let end = parseInt(el.innerHTML);
-		if (end === 4200) increment = 16;
-		if (end === 1000) increment = 4;
-		if (end === 566) increment = 2;
+		if (end === 4200) increment = 8;
+		if (end === 1000) increment = 2;
+		if (end === 566) increment = 1;
 		let t = setInterval(function() {
-			el.innerHTML = j + '';
+			el.innerHTML = j.toString().split(/(?=(?:\d{3})+(?!\d))/).join('\u2009');
 			if(j > end) {
-				el.innerHTML = end + '';
+				el.innerHTML = end.toString().split(/(?=(?:\d{3})+(?!\d))/).join('\u2009') + '\u200A+';
 				clearTimeout(t);
 			}
 			j += increment;
@@ -152,3 +175,6 @@ let interval = setInterval(function() {
 document.querySelector('.clients .nav').addEventListener('click', function(event) {
 	if (event.target.nodeName === 'LABEL') clearTimeout(interval);
 });
+
+let clientsTimer;
+autoChange(clientsTimer, '.clients', 2000);
