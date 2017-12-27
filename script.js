@@ -1,4 +1,4 @@
-function autoChange(timer, section, time) {
+function autoChange(timer, section, time) {										// АВТО СМЕНА
 	timer = setInterval(function() {
 		const currentSelector = section + ' input[checked]',
 			  firstInputSelector = section + ' input';
@@ -18,11 +18,13 @@ function autoChange(timer, section, time) {
 
 
 
-const separator = document.querySelector('.separator'),
+
+const separator = document.querySelector('.separator'),							// БЕЗ И С
 	  withPhoto = document.querySelector('.with'),
 	  withoutPhoto = document.querySelector('.without'),
 	  photoContainer = document.querySelector('#with-out');
 let flag = false;
+const stop = photoContainer.clientWidth * .44;
 
 separator.addEventListener('mousedown', function(event) {
 	event.preventDefault();
@@ -35,9 +37,18 @@ document.addEventListener('mouseup', function(event) {
 
 photoContainer.addEventListener('mousemove', function(event) {
 	let res = event.pageX - this.offsetLeft;
-	if (flag && (res > 0) && (res < withoutPhoto.offsetWidth)) {
-		separator.style.left = res + 'px';
-		withPhoto.style.width = res + 'px';
+	if (flag && (res < withoutPhoto.offsetWidth)) {
+		if(res > stop) 
+{			separator.style.left = res + 'px';
+			withPhoto.style.width = res + 'px';
+		} else {
+			separator.classList.add('stop');
+			withPhoto.classList.add('stop');
+			setTimeout(function() {
+				separator.classList.remove('stop');
+				withPhoto.classList.remove('stop');
+			}, 1000);
+		}
 	}
 }, false);
 
@@ -46,7 +57,8 @@ autoChange(withOutTimer, '#with-out', 10000);
 
 
 
-const modal = document.querySelector('div.modal');
+
+const modal = document.querySelector('div.modal');								// ОТКРЫТИЕ И ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА
 
 document.querySelectorAll('button.modal').forEach(function(i) {
 	i.addEventListener('click', function() {
@@ -62,7 +74,8 @@ modal.querySelector('.close').addEventListener('click', function(e) {
 
 
 
-document.querySelector('nav ul').addEventListener('click', function(event) {
+
+document.querySelector('nav ul').addEventListener('click', function(event) {	// ПО ЯКОРЯМ
 	event.preventDefault();
 	target = event.target;
 	if (target.nodeName !== 'A') {return}
@@ -76,7 +89,8 @@ document.querySelector('nav ul').addEventListener('click', function(event) {
 
 
 
-let scrollSearch = document.querySelector('.counter');
+
+let scrollSearch = document.querySelector('.counter');							// АВТО СЧЁТЧИК
 
 function sees() {
 	scrollSearch.position = {
@@ -117,9 +131,9 @@ function counter() {
 		if (end === 1000) increment = 2;
 		if (end === 566) increment = 1;
 		let t = setInterval(function() {
-			el.innerHTML = j.toString().split(/(?=(?:\d{3})+(?!\d))/).join('\u2009');
+			el.innerHTML = j.toString().replace(/(?=(?:\d{3})+(?!\d))/, '\u2009');
 			if(j > end) {
-				el.innerHTML = end.toString().split(/(?=(?:\d{3})+(?!\d))/).join('\u2009') + '\u200A+';
+				el.innerHTML = end.toString().replace(/(?=(?:\d{3})+(?!\d))/, '\u2009') + '\u200A+';
 				clearTimeout(t);
 			}
 			j += increment;
@@ -128,7 +142,8 @@ function counter() {
 }
 
 
-const calculatorRange = document.querySelector('.archive input[type="range"');
+
+const calculatorRange = document.querySelector('.archive input[type="range"');				// КАЛЬКУЛЯТОР
 
 calculatorRange.addEventListener('mousedown', function() {
 	flag = true;
@@ -141,7 +156,6 @@ calculatorRange.addEventListener('mouseup', function() {
 calculatorRange.addEventListener('mousemove', function(e) {
 	if(flag) document.querySelector('.archive .current').innerHTML = e.target.value;
 });
-
 
 
 let amount = document.querySelector('.amount input');
@@ -162,19 +176,6 @@ document.querySelector('.line.amount .indicators').addEventListener('click', fun
 
 
 
-let interval = setInterval(function() {
-	let currentSlide = document.querySelector('.clients input[checked]');
-	currentSlide.removeAttribute('checked', '');
-	if(currentSlide.nextElementSibling.nodeName === 'INPUT') {
-		currentSlide.nextElementSibling.setAttribute('checked', '')
-	} else {
-		document.getElementById('slide1').setAttribute('checked', '')
-	}
-}, 2000);
-
-document.querySelector('.clients .nav').addEventListener('click', function(event) {
-	if (event.target.nodeName === 'LABEL') clearTimeout(interval);
-});
 
 let clientsTimer;
 autoChange(clientsTimer, '.clients', 2000);
