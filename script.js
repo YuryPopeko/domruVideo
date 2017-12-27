@@ -42,10 +42,8 @@ photoContainer.addEventListener('mousemove', function(event) {
 {			separator.style.left = res + 'px';
 			withPhoto.style.width = res + 'px';
 		} else {
-			separator.classList.add('stop');
 			withPhoto.classList.add('stop');
 			setTimeout(function() {
-				separator.classList.remove('stop');
 				withPhoto.classList.remove('stop');
 			}, 1000);
 		}

@@ -228,7 +228,8 @@ header .phone-number {color: #fff}
   box-shadow: 0 0 35px 0 rgba(16,14,33,.35), inset 0px -1px 0px 0px rgba(255,255,255,.004);
 }
 
-.stop {animation: shake .8s linear}
+.stop,
+.stop ~ .separator {animation: shake .8s linear}
 
 .separator div {
   width: 100%;
@@ -267,7 +268,7 @@ header .phone-number {color: #fff}
   left: 4vw;
 }
 
-.separator.stop::before {animation: shake-reverse .8s linear}
+.stop ~ .separator::before {animation: shake-reverse .8s linear}
 
 #with-out .wrapper {
   position: relative;
