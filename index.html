@@ -76,7 +76,11 @@
 	    		</div>
 	    		<div>
 	    			<object class="globe">
-	    				<div class="meridian"></div>
+	    				<div class="meridian one"></div>
+	    				<div class="meridian two"></div>
+	    				<div class="meridian three"></div>
+	    				<div class="meridian four"></div>
+	    				<div class="meridian five"></div>
 	    				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378.96 510.14">
     						<circle class="fd0" cx="187.48" cy="465.3" r="41"></circle>
     						<path class="grey" d="M198.7,421.65l-5.15-1.1V378h-8.33v42.54l-5.15,1.1a44.76,44.76,0,1,0,18.64,0Zm-9.2,80.16a36.43,36.43,0,1,1,36.43-36.43A36.47,36.47,0,0,1,189.5,501.8Z"></path>
@@ -451,9 +455,7 @@
 	    			<div class="line fps">
 	    				<span>Частота кадров</span>
 	    				<div class="help">
-							<div class="tooltip">
-								Дает возможность выбора разных схем приема звонков в зависимости от времени суток, дня недели, а также графика работы сотрудников.
-							</div>
+							<div class="tooltip">Количество сменяемых кадров за единицу времени</div>
 						</div>
     					<input type="radio" name="fps" id="fps15" hidden>
     					<input type="radio" name="fps" id="fps20" hidden checked>
@@ -480,9 +482,7 @@
 	    			<div class="line archive">
 	    				<span>Видеоархив</span>
 	    				<div class="help">
-							<div class="tooltip">
-								Дает возможность выбора разных схем приема звонков в зависимости от времени суток, дня недели, а также графика работы сотрудников.
-							</div>
+							<div class="tooltip">Количество дней хранения видеозаписей</div>
 						</div>
 	    				<div class="range">
 	    					<span class="current">20</span>
@@ -496,20 +496,13 @@
 	    		<div>
 	    			<div class="line rent">
 	    				<span>Аренда</span>
-	    				<div class="help">
-							<div class="tooltip">
-								Дает возможность выбора разных схем приема звонков в зависимости от времени суток, дня недели, а также графика работы сотрудников.
-							</div>
-						</div>
     					<input type="checkbox" id="rent" hidden>
     					<label for="rent"></label>
 	    			</div>
 	    			<div class="line analysis">
 	    				<span>Видеоанализ</span>
 	    				<div class="help">
-							<div class="tooltip">
-								Дает возможность выбора разных схем приема звонков в зависимости от времени суток, дня недели, а также графика работы сотрудников.
-							</div>
+							<div class="tooltip">Индексация архива и поиск по образам</div>
 						</div>
     					<input type="checkbox" id="analysis" hidden>
     					<label for="analysis"></label>

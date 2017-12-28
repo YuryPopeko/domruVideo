@@ -292,7 +292,7 @@ h1 {
   border-bottom: .156vw solid #e2c404 !important;
   border-radius: .26vw;
   padding: 0 2.08vw;
-  font: 1.042vw/3.176vw fedra pro medium tf;
+  font: 1.042vw/2.864vw fedra pro medium tf;
 }
 
 .yellow:hover {background: #ffea01}
@@ -369,39 +369,18 @@ h2 {
 }
 
 @keyframes light-one-fd0 {
-  5% {fill: #fd0}
-  10% {fill: #fd0}
-  15% {fill: #fff}
-  20% {fill: #fff}
-  25% {fill: #fff}
-  30% {fill: #fff}
-  35% {fill: #fd0}
-  40% {fill: #fff}
-  45% {fill: #fff}
-  50% {fill: #fd0}
-  55% {fill: #fd0}
-  90% {fill: #fff}
+  5%, 10%, 35%, 50%, 55% {fill: #fd0}
+  15%, 20%, 25%, 30%, 40%, 45%, 90% {fill: #fff}
 }
 
 @keyframes light-two-fd0 {
-  0% {fill: #fff}
-  20% {fill: #fff}
-  25% {fill: #fd0}
-  65% {fill: #fd0}
-  70% {fill: #fff}
-  100% {fill: #fd0}
+  0%, 20%, 70% {fill: #fff}
+  25%, 65%, 100% {fill: #fd0}
 }
 
 @keyframes light-three-fd0 {
-  0% {fill: #fd0}
-  15% {fill: #fd0}
-  20% {fill: #fff}
-  25% {fill: #fff}
-  40% {fill: #fff}
-  55% {fill: #fff}
-  60% {fill: #fd0}
-  80% {fill: #fd0}
-  90% {fill: #fff}
+  0%, 15%, 60%, 80% {fill: #fd0}
+  20%, 25%, 40%, 55%, 90% {fill: #fff}
 }
 
 .storage:hover .lock {animation: shake .8s linear}
@@ -413,14 +392,12 @@ h2 {
 .pen {transform-origin: 0% 0%}
 
 @keyframes screwdriver {
-  20% {transform: translate(0, -30%) rotate(45deg)}
-  55% {transform: translate(0, -30%) rotate(45deg)}
+  20%, 55% {transform: translate(0, -30%) rotate(45deg)}
   85% {transform: rotate(0deg)}
 }
 
 @keyframes pen {
-  45% {transform: translate(0, 30%) rotate(-45deg)}
-  70% {transform: translate(0, 30%) rotate(-45deg)}
+  45%, 70% {transform: translate(0, 30%) rotate(-45deg)}
   100% {transform: rotate(0deg)}
 }
 
@@ -431,15 +408,12 @@ h2 {
 
 @keyframes planet {
   15% {transform: rotate(0deg)}
-  55% {transform: rotate(180deg)}
-  80% {transform: rotate(180deg)}
-  100% {transform: rotate(180deg)}
+  55%, 80%, 100% {transform: rotate(180deg)}
 }
 
 @keyframes data-point {
-  10% {fill: #333}
+  10%, 30% {fill: #333}
   20% {fill: #fcfeff}
-  30% {fill: #333}
 }
 
 .globe:hover .point:first-of-type {animation: data-point 1s .125s linear infinite}
@@ -451,8 +425,34 @@ h2 {
 .globe:hover .point:nth-of-type(7) {animation: data-point 1s .875s linear infinite}
 .globe:hover .point:last-of-type {animation: data-point 1s 1s linear infinite}
 
-@keyframes spin415 {
-  100% {transform: translate(-50%) rotateY(415deg)}
+@keyframes meridian-one {
+  34%, 85% {opacity: 1}
+  37%, 84% {opacity: 0}
+  100% {transform: translate(-50%) rotateY(413deg)}
+}
+
+@keyframes meridian-two {
+  14%, 70% {opacity: 1}
+  17%, 69% {opacity: 0}
+  100% {transform: translate(-50%) rotateY(485deg)}
+}
+
+@keyframes meridian-three {
+  50%, 97% {opacity: 0}
+  51%, 94% {opacity: 1}
+  100% {transform: translate(-50%) rotateY(557deg)}
+}
+
+@keyframes meridian-four {
+  26%, 72% {opacity: 1}
+  23%, 75% {opacity: 0}
+  100% {transform: translate(-50%) rotateY(269deg)}
+}
+
+@keyframes meridian-five {
+  15%, 49% {opacity: 1}
+  52%, 99% {opacity: 0}
+  100% {transform: translate(-50%) rotateY(341deg)}
 }
 
 .meridian {
@@ -461,16 +461,36 @@ h2 {
   position: absolute;
   top: 0;
   left: 50%;
-  border: .11vw solid #333;
   border-radius: 50%;
-  transform: translate(-50%) rotateY(55deg)
+  border-left: .11vw solid #333;
 }
 
-.globe:hover .meridian {animation: spin415 2s linear infinite}
+.meridian.one {transform: translate(-50%) rotateY(53deg)}
+.meridian.two {transform: translate(-50%) rotateY(125deg)}
+
+.meridian.three {
+  opacity: 0;
+  transform: translate(-50%) rotateY(197deg);
+}
+
+.meridian.four {
+  opacity: 0;
+  transform: translate(-50%) rotateY(-91deg);
+}
+
+.meridian.five {
+  opacity: 0;
+  transform: translate(-50%) rotateY(-19deg);
+}
+
+.globe:hover .meridian.one {animation: meridian-one 3s linear infinite}
+.globe:hover .meridian.two {animation: meridian-two 3s linear infinite}
+.globe:hover .meridian.three {animation: meridian-three 3s linear infinite}
+.globe:hover .meridian.four {animation: meridian-four 3s linear infinite}
+.globe:hover .meridian.five {animation: meridian-five 3s linear infinite}
 
 @keyframes record {
-  30% {fill: #E31E24}
-  70% {fill: #E31E24}
+  30%, 70% {fill: #E31E24}
   100% {fill: #fcfeff}
 }
 
@@ -478,60 +498,34 @@ h2 {
 .cameras:hover circle:last-of-type {animation: record 1s .1s infinite}
 
 @keyframes wave-one {
-  10% {fill: #333}
-  15% {fill: #f5fbff}
-  75% {fill: #f5fbff}
-  80% {fill: #333}
+  10%, 80% {fill: #333}
+  15%, 75% {fill: #f5fbff}
 }
 
 @keyframes wave-two {
-  25% {fill: #333}
-  30% {fill: #f5fbff}
-  85% {fill: #f5fbff}
-  90% {fill: #333}
+  25%, 90% {fill: #333}
+  30%, 85% {fill: #f5fbff}
 }
 
 @keyframes wave-three {
-  40% {fill: #333}
-  45% {fill: #f5fbff}
-  95% {fill: #f5fbff}
-  100% {fill: #333}
+  40%, 100% {fill: #333}
+  45%, 95% {fill: #f5fbff}
+  
 }
 
 @keyframes light-one-blue {
-  5% {fill: #729fd4}
-  10% {fill: #729fd4}
-  15% {fill: #fff}
-  20% {fill: #fff}
-  25% {fill: #fff}
-  30% {fill: #fff}
-  35% {fill: #729fd4}
-  40% {fill: #fff}
-  45% {fill: #fff}
-  50% {fill: #729fd4}
-  55% {fill: #729fd4}
-  90% {fill: #fff}
+  5%, 10%, 35%, 50%, 55% {fill: #729fd4}
+  15%, 20%, 25%, 30%, 40%, 45%, 90% {fill: #fff}
 }
 
 @keyframes light-two-blue {
-  0% {fill: #fff}
-  20% {fill: #fff}
-  25% {fill: #729fd4}
-  65% {fill: #729fd4}
-  70% {fill: #fff}
-  100% {fill: #729fd4}
+  0%, 20%, 70% {fill: #fff}
+  25%, 65%, 100% {fill: #729fd4}
 }
 
 @keyframes light-three-blue {
-  0% {fill: #729fd4}
-  5% {fill: #729fd4}
-  20% {fill: #fff}
-  35% {fill: #fff}
-  40% {fill: #fff}
-  55% {fill: #fff}
-  60% {fill: #729fd4}
-  80% {fill: #729fd4}
-  90% {fill: #fff}
+  0%, 5%, 60%, 80% {fill: #729fd4}
+  20%, 35%, 40%, 55%, 90% {fill: #fff}
 }
 
 .modem:hover .wave-one {animation: wave-one 1s infinite linear}
@@ -553,14 +547,12 @@ h2 {
 
 @keyframes iMac {
   5% {transform: translate(0)}
-  30% {transform: translate(-5vw)}
-  85% {transform: translate(-5vw)}
+  30%, 85% {transform: translate(-5vw)}
 }
 
 @keyframes iPad {
   5% {transform: translate(0)}
-  30% {transform: translate(5vw)}
-  85% {transform: translate(5vw)}
+  30%, 85% {transform: translate(5vw)}
 }
 
 .devices:hover .iMac {animation: iMac 1.4s}
@@ -653,7 +645,10 @@ h2 {
   margin: 1.25vw 0 0 0;
 }
 
-#opportunities {transition: .4s ease-in-out}
+#opportunities {
+  height: 48.542vw;
+  transition: .4s ease-in-out;
+}
 
 #opportunities .indicators {display: inline-block}
 
@@ -663,7 +658,7 @@ h2 {
   font: .83vw/1.25vw fedra pro medium tf;
 }
 
-#opportunities label:nth-of-type(n+2) {margin: 2vw 0 0 0}
+#opportunities label:nth-of-type(n+2) {margin: 1.9vw 0 0 0}
 
 #opportunities p {
   height: 0;
@@ -864,6 +859,7 @@ h2 span {font: .937vw/3vw fedra pro book tf}
 #tariffs .submit {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -884,9 +880,17 @@ h2 span {font: .937vw/3vw fedra pro book tf}
   color: #999;
 }
 
-#tariffs form > div {width: 45%}
-#tariffs form > div:first-child {float: left}
-#tariffs form > div:nth-child(2) {float: right}
+#tariffs form > div {width: 50%}
+
+#tariffs form > div:first-child {
+  float: left;
+  padding: 0 2.76vw 0 0;
+  border-right: 1px solid #e9e9e9;
+}
+#tariffs form > div:nth-child(2) {
+  float: right;
+  padding: 0 0 0 2.76vw;
+}
 
 #tariffs .line {position: relative}
 
@@ -1050,6 +1054,7 @@ input[type=range]::-ms-track {border-color: #fff}
   bottom: 1vw;
   right: 1vw;
   width: 16.69vw;
+  text-align: left;
   background-color: #fff;
   border: 3px solid #ffdd00;
   padding: 0.9vw;

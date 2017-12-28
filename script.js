@@ -37,16 +37,15 @@ document.addEventListener('mouseup', function(event) {
 
 photoContainer.addEventListener('mousemove', function(event) {
 	let res = event.pageX - this.offsetLeft;
-	if (flag && (res < withoutPhoto.offsetWidth)) {
-		if(res > stop) 
-{			separator.style.left = res + 'px';
-			withPhoto.style.width = res + 'px';
-		} else {
-			withPhoto.classList.add('stop');
-			setTimeout(function() {
-				withPhoto.classList.remove('stop');
-			}, 1000);
-		}
+	if (flag && res > stop && res < withoutPhoto.offsetWidth) {
+		separator.style.left = res + 'px';
+		withPhoto.style.width = res + 'px';
+	} 
+	if(flag && res < stop) {
+		withPhoto.classList.add('stop');
+		setTimeout(function() {
+			withPhoto.classList.remove('stop');
+		}, 900);
 	}
 }, false);
 
@@ -129,9 +128,9 @@ function counter() {
 		if (end === 1000) increment = 2;
 		if (end === 566) increment = 1;
 		let t = setInterval(function() {
-			el.innerHTML = j.toString().replace(/(?=(?:\d{3})+(?!\d))/, '\u2009');
+			el.innerHTML = j.toLocaleString('ru-RU');
 			if(j > end) {
-				el.innerHTML = end.toString().replace(/(?=(?:\d{3})+(?!\d))/, '\u2009') + '\u200A+';
+				el.innerHTML = end.toLocaleString('ru-RU') + '\u200A+';
 				clearTimeout(t);
 			}
 			j += increment;
