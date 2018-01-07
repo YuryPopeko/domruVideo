@@ -149,9 +149,9 @@ input:not([type='submit']) {
 header {
   position: absolute;
   top: .88vw;
-  left: 50%;
+  right: 0;
+  left: 0;
   z-index: 3;
-  transform: translate(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -228,8 +228,7 @@ header .phone-number {color: #fff}
   box-shadow: 0 0 35px 0 rgba(16,14,33,.35), inset 0px -1px 0px 0px rgba(255,255,255,.004);
 }
 
-.stop,
-.stop ~ .separator {animation: shake .8s linear}
+.stop {animation: shake .8s linear}
 
 .separator div {
   width: 100%;
@@ -268,7 +267,9 @@ header .phone-number {color: #fff}
   left: 4vw;
 }
 
-.stop ~ .separator::before {animation: shake-reverse .8s linear}
+.stop.separator::before,
+.stop.separator div::before,
+.stop.separator div::after {animation: shake-reverse .8s linear}
 
 #with-out .wrapper {
   position: relative;
@@ -368,37 +369,25 @@ h2 {
   margin: 0 auto 1vw auto;
 }
 
-@keyframes light-one-fd0 {
-  5%, 10%, 35%, 50%, 55% {fill: #fd0}
-  15%, 20%, 25%, 30%, 40%, 45%, 90% {fill: #fff}
-}
-
-@keyframes light-two-fd0 {
-  0%, 20%, 70% {fill: #fff}
-  25%, 65%, 100% {fill: #fd0}
-}
-
-@keyframes light-three-fd0 {
-  0%, 15%, 60%, 80% {fill: #fd0}
-  20%, 25%, 40%, 55%, 90% {fill: #fff}
+@keyframes flashing-fd0 {
+  5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {fill: #fd0}
+  10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {fill: #fcfeff}
 }
 
 .storage:hover .lock {animation: shake .8s linear}
-.storage:hover .light-one {animation: light-one-fd0 1.5s}
-.storage:hover .light-two {animation: light-two-fd0 1.5s}
-.storage:hover .light-three {animation: light-three-fd0 1.5s}
+.storage:hover .light-one {animation: flashing-fd0 1s 2}
+.storage:hover .light-two {animation: flashing-fd0 2s}
+.storage:hover .light-three {animation: flashing-fd0 1.5s 1.25}
 
 .screwdriver {transform-origin: 0% 100%}
 .pen {transform-origin: 0% 0%}
 
 @keyframes screwdriver {
   20%, 55% {transform: translate(0, -30%) rotate(45deg)}
-  85% {transform: rotate(0deg)}
 }
 
 @keyframes pen {
   45%, 70% {transform: translate(0, 30%) rotate(-45deg)}
-  100% {transform: rotate(0deg)}
 }
 
 .tools:hover .screwdriver {animation: screwdriver .6s ease-in-out}
@@ -424,6 +413,11 @@ h2 {
 .globe:hover .point:nth-of-type(6) {animation: data-point 1s .75s linear infinite}
 .globe:hover .point:nth-of-type(7) {animation: data-point 1s .875s linear infinite}
 .globe:hover .point:last-of-type {animation: data-point 1s 1s linear infinite}
+
+@keyframes meridian-zero {
+  10.5%, 11.5%, 30%, 31%, 50.5%, 51.5%, 70.5%, 71.5%, 90.5%, 91.5% {opacity: 0}
+  11%, 30.5%, 51%, 71%, 91% {opacity: 1}
+}
 
 @keyframes meridian-one {
   34%, 85% {opacity: 1}
@@ -456,13 +450,23 @@ h2 {
 }
 
 .meridian {
-  width: 3.17vw;
   height: 3.3vw;
   position: absolute;
   top: 0;
   left: 50%;
+  transform: translate(-50%);
+}
+
+.meridian:not(.zero) {
+  width: 3.17vw;
   border-radius: 50%;
   border-left: .11vw solid #333;
+}
+
+.meridian.zero {
+  width: .09vw;
+  background: #333;
+  opacity: 0;
 }
 
 .meridian.one {transform: translate(-50%) rotateY(53deg)}
@@ -483,11 +487,12 @@ h2 {
   transform: translate(-50%) rotateY(-19deg);
 }
 
-.globe:hover .meridian.one {animation: meridian-one 3s linear infinite}
-.globe:hover .meridian.two {animation: meridian-two 3s linear infinite}
-.globe:hover .meridian.three {animation: meridian-three 3s linear infinite}
-.globe:hover .meridian.four {animation: meridian-four 3s linear infinite}
-.globe:hover .meridian.five {animation: meridian-five 3s linear infinite}
+.globe:hover .meridian.zero {animation: meridian-zero 2.5s linear infinite}
+.globe:hover .meridian.one {animation: meridian-one 2.5s linear infinite}
+.globe:hover .meridian.two {animation: meridian-two 2.5s linear infinite}
+.globe:hover .meridian.three {animation: meridian-three 2.5s linear infinite}
+.globe:hover .meridian.four {animation: meridian-four 2.5s linear infinite}
+.globe:hover .meridian.five {animation: meridian-five 2.5s linear infinite}
 
 @keyframes record {
   30%, 70% {fill: #E31E24}
@@ -513,36 +518,26 @@ h2 {
   
 }
 
-@keyframes light-one-blue {
-  5%, 10%, 35%, 50%, 55% {fill: #729fd4}
-  15%, 20%, 25%, 30%, 40%, 45%, 90% {fill: #fff}
-}
-
-@keyframes light-two-blue {
-  0%, 20%, 70% {fill: #fff}
-  25%, 65%, 100% {fill: #729fd4}
-}
-
-@keyframes light-three-blue {
-  0%, 5%, 60%, 80% {fill: #729fd4}
-  20%, 35%, 40%, 55%, 90% {fill: #fff}
+@keyframes flashing-blue {
+  5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {fill: #729fd4}
+  10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {fill: #fcfeff}
 }
 
 .modem:hover .wave-one {animation: wave-one 1s infinite linear}
 .modem:hover .wave-two {animation: wave-two 1s infinite linear}
 .modem:hover .wave-three {animation: wave-three 1s infinite linear}
-.modem:hover .light-one {animation: light-one-blue 1.5s infinite linear}
-.modem:hover .light-two {animation: light-two-blue 1.5s infinite linear}
-.modem:hover .light-three {animation: light-three-blue 1.5s infinite linear}
+.modem:hover .light-one {animation: flashing-blue 2s infinite linear}
+.modem:hover .light-two {animation: flashing-blue 3s infinite linear}
+.modem:hover .light-three {animation: flashing-blue 2.5s infinite linear}
 
 @keyframes cloud-scale {
   50% {transform: scale(1.04) translate(0, 1%)}
 }
 
-.cloud:hover .light-one {animation: light-one-fd0 2s infinite}
-.cloud:hover .light-two {animation: light-two-fd0 2s infinite}
-.cloud:hover .light-three {animation: light-three-fd0 2s infinite}
-.cloud:hover .light-four {animation: light-one-fd0 2s infinite}
+.cloud:hover .light-one {animation: flashing-fd0 2s infinite}
+.cloud:hover .light-two {animation: flashing-fd0 1s infinite}
+.cloud:hover .light-three {animation: flashing-fd0 1.25s infinite}
+.cloud:hover .light-four {animation: flashing-fd0 2.5s infinite}
 .cloud:hover g {animation: cloud-scale 2s ease-in-out}
 
 @keyframes iMac {
@@ -647,7 +642,65 @@ h2 {
 
 #opportunities {
   height: 48.542vw;
+  position: relative;
   transition: .4s ease-in-out;
+}
+
+.sd-fullhd {
+  width: 33.65vw;
+  height: 18.4vw;
+  position: absolute;
+  top: 36.5%;
+  left: 46.82%;
+  border: .16vw solid #e95328;
+  overflow: hidden;
+  cursor: none;
+  opacity: 0;
+  transition: .4s ease-in-out;
+}
+
+.sd-fullhd > div {
+  width: 50%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.sd-fullhd img {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+.sd-fullhd .sd {border-right: .16vw solid #e95328}
+
+.lens::after {
+  display: block;
+  padding: 0 .83vw;
+  background: #e95328;
+  color: #fff;
+  font: 1vw/1.614vw fedra pro medium tf;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sd .lens {background: url(img/sd.jpg) no-repeat}
+.fullhd .lens {background: url(img/fullhd.jpg) no-repeat}
+.sd .lens::after {content: 'SD'}
+.fullhd .lens::after {content: 'FullHD'}
+
+.sd-fullhd .lens {
+  width: 6.77vw;
+  height: 6.77vw;
+  border-radius: 50%;
+  border: .2vw solid #fff;
+  box-shadow: 0px 0px 3.354vw 1.437vw rgba(0,0,0,.68);
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  background-size: 400% auto;
 }
 
 #opportunities .indicators {display: inline-block}
@@ -665,7 +718,7 @@ h2 {
   opacity: 0;
   margin: .781vw 0 0 0;
   font: .83vw/1.25vw fedra pro book tf;
-  transition: .4s ease-in-out;
+  transition: .2s ease-in-out;
 }
 
 #image-search:checked ~ #opportunities label[for='image-search'] div,
@@ -715,29 +768,31 @@ h2 {
 
 #opportunities object {width: 1.823vw}
 
+#fullhd:checked ~ #opportunities {
+  background: url(img/ipad.png) 100% 12.25vw / 44.271vw no-repeat,
+              url(img/resolutions.jpg) 86.4% 14vw / 33.7vw no-repeat;
+}
+
+#fullhd:checked ~ #opportunities .sd-fullhd {opacity: 1}
+
 #image-search:checked ~ #opportunities {
-  background: url(img/ipad.png) 74% 12.25vw / 44.271vw no-repeat,
-              url(img/image-search.jpg) 69.9% 14vw / 33.7vw no-repeat;
+  background: url(img/ipad.png) 100% 12.25vw / 44.271vw no-repeat,
+              url(img/image-search.jpg) 86.4% 14vw / 33.7vw no-repeat;
 }
 
 #client-counter:checked ~ #opportunities {
-  background: url(img/ipad.png) 74% 12.25vw / 44.271vw no-repeat,
-              url(img/client-counter.jpg) 69.9% 14vw / 33.7vw no-repeat;
+  background: url(img/ipad.png) 100% 12.25vw / 44.271vw no-repeat,
+              url(img/client-counter.jpg) 86.4% 14vw / 33.7vw no-repeat;
 }
 
 #sound-record:checked ~ #opportunities {
-  background: url(img/ipad.png) 74% 12.25vw / 44.271vw no-repeat,
-              url(img/sound-record.jpg) 69.9% 14vw / 33.7vw no-repeat;
+  background: url(img/ipad.png) 100% 12.25vw / 44.271vw no-repeat,
+              url(img/sound-record.jpg) 86.4% 14vw / 33.7vw no-repeat;
 }
 
 #public-cam:checked ~ #opportunities {
-  background: url(img/ipad.png) 74% 12.25vw / 44.271vw no-repeat,
-              url(img/public-cam.jpg) 69.9% 14vw / 33.7vw no-repeat;
-}
-
-#fullhd:checked ~ #opportunities {
-  background: url(img/ipad.png) 74% 12.25vw / 44.271vw no-repeat,
-              url(img/fullhd.jpg) 69.9% 14vw / 33.7vw no-repeat;
+  background: url(img/ipad.png) 100% 12.25vw / 44.271vw no-repeat,
+              url(img/public-cam.jpg) 86.4% 14vw / 33.7vw no-repeat;
 }
 
 #image-search:checked ~ #opportunities label[for='image-search'] + p,

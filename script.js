@@ -26,27 +26,37 @@ const separator = document.querySelector('.separator'),							// БЕЗ И С
 let flag = false;
 const stop = photoContainer.clientWidth * .44;
 
-separator.addEventListener('mousedown', function(event) {
+function separatorDown(event) {
 	event.preventDefault();
 	flag = true;
-}, false);
+}
 
-document.addEventListener('mouseup', function(event) {
-	flag = false;
-}, false);
-
-photoContainer.addEventListener('mousemove', function(event) {
-	let res = event.pageX - this.offsetLeft;
+function separatorMove(event, res) {
+	event.preventDefault();
 	if (flag && res > stop && res < withoutPhoto.offsetWidth) {
 		separator.style.left = res + 'px';
 		withPhoto.style.width = res + 'px';
 	} 
 	if(flag && res < stop) {
-		withPhoto.classList.add('stop');
+		separator.classList.add('stop');
 		setTimeout(function() {
-			withPhoto.classList.remove('stop');
+			separator.classList.remove('stop');
 		}, 900);
 	}
+}
+
+separator.addEventListener('mousedown', function(event) {separatorDown(event)}, false);
+separator.addEventListener('touchstart', function(event) {separatorDown(event)}, false);
+
+document.addEventListener('mouseup', function(event) {flag = false}, false);
+document.addEventListener('touchend', function(event) {flag = false}, false);
+
+photoContainer.addEventListener('mousemove', function(event) {
+	separatorMove(event, event.pageX - this.offsetLeft);
+}, false);
+
+photoContainer.addEventListener('touchmove', function(event) {
+	separatorMove(event, event.changedTouches[0].screenX - this.offsetLeft);
 }, false);
 
 let withOutTimer;
@@ -64,9 +74,18 @@ document.querySelectorAll('button.modal').forEach(function(i) {
 	});
 });
 
-modal.querySelector('.close').addEventListener('click', function(e) {
+function modalClose() {
 	modal.classList.remove('open');
 	document.body.style.overflow = '';
+}
+
+modal.querySelector('.close').addEventListener('click', function() {modalClose()});
+
+document.addEventListener('keydown', function(event) {
+	if (event.keyCode === 27) {
+		event.preventDefault();
+		modalClose();
+	}
 });
 
 
@@ -136,6 +155,27 @@ function counter() {
 			j += increment;
 		}, 0);
 	}
+}
+
+
+
+
+
+document.querySelector('.sd-fullhd').addEventListener('mousemove', function(event) {		// SD VS FULLHD LENS ZOOM
+	if(event.target.parentNode.classList.contains('sd')) {
+		zoom(event, document.querySelector('.sd-fullhd .sd .lens'));
+	}
+	if(event.target.parentNode.classList.contains('fullhd')) {
+		zoom(event, document.querySelector('.sd-fullhd .fullhd .lens'));
+	}
+});
+
+function zoom(event, overlay) {
+	let posX = event.offsetX,
+		posY = event.offsetY;
+	overlay.style.left = posX + 'px';
+	overlay.style.top = posY + 'px';
+	overlay.style.backgroundPosition = (-posX) + 'px ' + (-posY) + 'px';
 }
 
 
