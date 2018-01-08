@@ -46,6 +46,7 @@ p {margin: 0}
 
 object {
   display: flex;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
 }
@@ -894,10 +895,27 @@ h2 {
 }
 
 #application {
-  height: 53.594vw;
+  height: 56.354vw;
   background: #f5fbff url(img/application.png) no-repeat center 14.479vw / 60vw auto;
   border-top: 1px solid #e9e9e9;
   border-bottom: 1px solid #e9e9e9;
+  position: relative;
+}
+
+#application p {
+  font: .937vw/1.25vw fedra pro book tf;
+  color: #abafb2;
+  position: absolute;
+  left: 50%;
+  bottom: 4.17vw;
+  transform: translateX(-50%);
+}
+
+#application p svg {
+  width: 1.3vw;
+  fill-rule: evenodd;
+  opacity: .3;
+  margin: .52vw;
 }
 
 h2 span {font: .937vw/3vw fedra pro book tf}
